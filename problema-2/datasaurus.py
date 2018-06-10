@@ -39,7 +39,7 @@ def LoadData():
     
 def GetDataGroup(data, dataColumn):
     baseColumnIndex = data[0].index(dataColumn)
-    dataList = [[x[baseColumnIndex], x[baseColumnIndex + 1]] for x in data]
+    dataList = [[row[baseColumnIndex], row[baseColumnIndex + 1]] for row in data]
     return dataList[2:]
 
 def GetDataHeader(data):

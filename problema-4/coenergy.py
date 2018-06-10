@@ -1,12 +1,20 @@
 import csv
+import pandas as pd
+import matplotlib as plt
 
 def LoadData():
     data = []
-    with open('fcoenergy.csv', 'r') as f:
-        try:
-            data = list(csv.reader(f, delimiter='\t'))
-        except Exception as e:
-            print(e)
-        finally:
-            f.close()
-    return data
+    try:
+        data = pd.read_csv('fcoenergy.csv', delimiter=',', parse_dates=['Date'], index_col='Date')
+    except Exception as e:
+        print(e)
+    finally:
+        return data
+
+def main():
+    data = LoadData()
+    print(data['0:00'])
+    
+
+if __name__ == '__main__':
+    main()
