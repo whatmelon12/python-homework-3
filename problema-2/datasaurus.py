@@ -65,9 +65,9 @@ def main():
     for x in plotDictionary.keys():
         item = plotDictionary.get(x)
         print('\n' + x)
-        print('Desviación Estandar: ' + str(item.getVariance()))
-        print('Media: ' + str(item.getMean()))
-        print('Correlacion: ' + str(item.getCorrelation()))
+        print('Desviación Estandar: ' + str(round(item.getVariance(), 2)))
+        print('Media: ' + str(round(item.getMean(), 2)))
+        print('Correlacion: ' + str(round(item.getCorrelation()[0], 2)))
 
     #Print graphs
     CreatePlotGraph(notDinoList, plotDictionary)
