@@ -1,3 +1,5 @@
+#Omar Mejia
+#Rafael Segistan
 import csv
 import numpy as np
 import scipy.sparse.csgraph as csgraph

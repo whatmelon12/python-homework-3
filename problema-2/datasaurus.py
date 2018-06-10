@@ -19,12 +19,12 @@ class PlotPoints:
         return np.correlate(self.x, self.y)
     
     def graphScatter(self):
-        plt.scatter(self.x, self.y)
-        plt.show()
+        fig = plt.figure()
+        fig.add_subplot(111).scatter(self.x, self.y)
     
     def graphPlot(self):
-        plt.plot(self.x, self.y)
-        plt.show()
+        fig = plt.figure()
+        fig.add_subplot(111).plot(self.x, self.y)
 
 def LoadData():
     data = []
@@ -55,14 +55,24 @@ def CreatePlotGraph(headers, dictionary):
     for i in range(len(headers)):
         item = dictionary.get(headers[i])
         fig.add_subplot(3, 4, i + 1).plot(item.x, item.y)
-    plt.show()
 
 def main():
     data = LoadData()
     plotDictionary = MapPlotPoints(data)
     notDinoList = [x for x in plotDictionary.keys() if x != 'dino']
+
+    #Print data of all data sets
+    for x in plotDictionary.keys():
+        item = plotDictionary.get(x)
+        print('\n' + x)
+        print('Desviación Estandar: ' + str(item.getVariance()))
+        print('Media: ' + str(item.getMean()))
+        print('Correlacion: ' + str(item.getCorrelation()))
+
+    #Print graphs
     CreatePlotGraph(notDinoList, plotDictionary)
     plotDictionary.get('dino').graphScatter()
+    plt.show()
 
 if __name__ == '__main__':
     main()
