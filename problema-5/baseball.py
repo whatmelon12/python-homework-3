@@ -20,23 +20,27 @@ def main():
     #Año con mas juegos salvados.
     print('Año donde Mariano termino mas juegos: ' + str(dfMariano.loc[dfMariano['GF'].idxmax()]['Year']))
 
-    # #Grafico de barras de salvaciones por año
-    # dfMariano.plot('Year', 'SV', 'bar')
-    # plt.show()
+    #Grafico de barras de salvaciones por año
+    dfMariano.plot('Year', 'SV', 'bar')
+    plt.title('Salvaciones por Año Mariano')
+    plt.show()
 
-    # #Boxplot de lanzamiento promedio de los yankees
-    # dfYankees[dfYankees['Year'] >= dfMariano['Year'].min()].boxplot('PAge')
-    # plt.show()
+    #Boxplot de lanzamiento promedio de los yankees
+    dfYankees[dfYankees['Year'] >= dfMariano['Year'].min()].boxplot('PAge')
+    plt.title('Lanzamiento promedio de los yankees')
+    plt.show()
 
     #Merge de asistencia al yankee y los premios de mariano
 
-    # #Asistencia de al yankee por año y la ERA de mariano por año
-    # fig = plt.figure()
-    # fig.add_subplot(1, 2, 1)
-    # dfYankees[dfYankees['Year'] >= dfMariano['Year'].min()].boxplot('Attendance')
-    # fig.add_subplot(1, 2, 2)
-    # dfMariano.boxplot('ERA')
-    # plt.show()
+    #Asistencia de al yankee por año y la ERA de mariano por año
+    fig = plt.figure()
+    fig.add_subplot(1, 2, 1)
+    dfYankees[dfYankees['Year'] >= dfMariano['Year'].min()].boxplot('Attendance')
+    plt.title('Asistencia al yankee por año')
+    fig.add_subplot(1, 2, 2)
+    dfMariano.boxplot('ERA')
+    plt.title('ERA de Mariano por año')
+    plt.show()
 
 
 if __name__ == '__main__':
