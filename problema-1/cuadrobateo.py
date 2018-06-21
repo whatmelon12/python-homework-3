@@ -19,8 +19,8 @@ def LoadData():
 def setInfo(ax, data):
     for i in range(len(y)):
         for j in range(len(x)):
-            text = ax.text(j, i, data[i, j],
-                           ha="center", va="center", color="w")
+            ax.text(j, i, data[i, j],
+                    ha="center", va="center", color="w")
     ax.set_title("HeatMap")
 
 
@@ -43,6 +43,7 @@ def main():
     fig.tight_layout()
     setInfo(ax, data)
     plt.show()
+
 
 if __name__ == '__main__':
     main()
